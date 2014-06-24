@@ -14,7 +14,7 @@
   
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.1.jpg)
   
-  [点击查看](https://github.com/cyclegtx/wave_background/tree/ef35a31908e6a735a3f4b576d80fd622375e731f)  
+ <a href="https://github.com/cyclegtx/wave_background/tree/ef35a31908e6a735a3f4b576d80fd622375e731f" target="_blank">点击查看历史代码</a>
 ####Step2.添加Canvas
   新建一个画布```<canvas>```元素，并放在在所有按钮和logo的下方以免遮挡前面的元素。
 ```html
@@ -30,8 +30,10 @@ var ctx = canvas.getContext('2d');
 canvas.width = canvas.parentNode.offsetWidth;  
 canvas.height = canvas.parentNode.offsetHeight;
 ```
-  
-  [点击查看](https://github.com/cyclegtx/wave_background/tree/2cf051efbf4dd95838b56e16f1d83feec0780a82)
+
+ <a href="https://github.com/cyclegtx/wave_background/tree/2cf051efbf4dd95838b56e16f1d83feec0780a82" target="_blank">点击查看历史代码</a>
+ 
+ 
 ####Step3.画矩形
   在画布中画一个充满半个屏幕的矩形。
   我们只需要找到矩形的四个定点的坐标，使用Canvas的绘制路径并填充这个路径。四个点分别是：```(0, 画布高度t/2)```
@@ -65,7 +67,7 @@ ctx.fill();
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/2.1.jpg)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/60be5b0e29bad3012627e27cbe86daa1d6678160)
+<a href="https://github.com/cyclegtx/wave_background/tree/60be5b0e29bad3012627e27cbe86daa1d6678160" target="_blank">点击查看历史代码</a>
 
 
 ####Step4.使矩形运动
@@ -140,7 +142,7 @@ function loop(){
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/2.gif)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/5d855717cb6b788dabbe5268e6674300f5731e80)
+<a href="https://github.com/cyclegtx/wave_background/tree/5d855717cb6b788dabbe5268e6674300f5731e80" target="_blank">点击查看历史代码</a>
 
 
 ####Step5.使矩形左右运动不同步
@@ -179,7 +181,7 @@ function loop(){
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/3.gif)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/1f42946f10836110e16dbfd76a65fcd88cd16ae1)
+<a href="https://github.com/cyclegtx/wave_background/tree/1f42946f10836110e16dbfd76a65fcd88cd16ae1" target="_blank">点击查看历史代码</a>
 
 
 ####Step6.模拟波浪的形态
@@ -205,7 +207,7 @@ ctx.closePath();
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/4.gif)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/32ae5d1096f906c697458201c2273ff8abb49fbb)
+<a href="https://github.com/cyclegtx/wave_background/tree/32ae5d1096f906c697458201c2273ff8abb49fbb" target="_blank">点击查看历史代码</a>
 
 
 ####Step7.3个波浪
@@ -245,7 +247,7 @@ function loop(){
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/5.gif)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/1f316066805f48ccc312aad35f83963c6b5fb6a3)
+<a href="https://github.com/cyclegtx/wave_background/tree/1f316066805f48ccc312aad35f83963c6b5fb6a3" target="_blank">点击查看历史代码</a>
 
 
 ####Step8.完成
@@ -257,9 +259,4 @@ function loop(){
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
 
 
-[点击查看](https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e)
-
-
-
-
-
+<a href="https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e" target="_blank">点击查看历史代码</a>
