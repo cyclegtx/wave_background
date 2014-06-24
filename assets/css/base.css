@@ -1,0 +1,253 @@
+/* ----------------------------------
+ * html, body
+ * ---------------------------------- */
+html, body {
+  position: relative;
+  width: 100%;
+}
+/* ----------------------------------
+ * box sizing
+ * ---------------------------------- */
+*, 
+*:after, 
+*::before {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/* ----------------------------------
+ * clearfix
+ * ---------------------------------- */
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+/* ----------------------------------
+ * scroll
+ * ---------------------------------- */
+.scroll-y, .scroll-x {
+  -webkit-overflow-scrolling: touch;
+     -moz-overflow-scrolling: touch;
+          overflow-scrolling: touch;
+}
+.scroll-y {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.scroll-x {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+/* ----------------------------------
+ * hr
+ * ---------------------------------- */
+.rule {
+  color: rgba(0, 0, 0, .1);
+  border: none;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin-bottom: 10px;
+}
+.rule--dotted {
+  border-bottom-style: dotted;
+}
+.rule--dashed {
+  border-bottom-style: dashed;
+}
+/* ----------------------------------
+ * image
+ * ---------------------------------- */
+img {
+  display: block;
+  width: 100%;
+}
+img[width],
+img[height] {
+  width: none;
+}
+.img--right {
+  float: right;
+  marin: 10px;
+}
+.img--left {
+  float: left;
+  margin: 10px;
+}
+.img--center {
+  display: block;
+  margin: 0 auto 10px;
+}
+/* ----------------------------------
+ * ellipsis
+ * ---------------------------------- */
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* ----------------------------------
+ * break
+ * ---------------------------------- */
+.break {
+  word-wrap: break-word; 
+  word-break: normal; 
+  word-break:break-all;
+}
+/* ----------------------------------
+ * align
+ * ---------------------------------- */
+.align-vertical {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: box;
+  /*------content vertical------*/
+    -webkit-box-align: center;
+       -moz-box-align: center;
+       -ms-flex-align:center;
+            box-align: center;
+  /*------content horizontal------*/  
+  -webkit-box-pack: center;
+     -moz-box-pack: center;
+      -ms-flex-pack:center;
+          box-pack: center;
+}
+.align-center {
+  text-align: center;
+}
+.align-left {
+  text-align: left;
+}
+.align-right {
+  text-align: right;
+}
+/* ----------------------------------
+ * flexbox
+ * ---------------------------------- */
+.flexbox {
+  display: -webkit-box !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: box !important;
+}
+.flexbox > .cell__equality {
+  -webkit-box-flex: 1;
+      -webkit-flex: 1;
+     -moz-box-flex: 1;
+      -ms-box-flex: 1;
+              flex: 1;
+}
+.flexbox--block {
+  -webkit-box-orient: vertical;
+     -moz-box-orient: vertical;
+          box-orient: vertical; 
+}
+.flexbox--top {
+  -webkit-box-align: start;
+     -moz-box-align: start;
+          box-align: start; 
+}
+.flexbox--bottom {
+  -webkit-box-align: end;
+     -moz-box-align: end;
+          box-align: end; 
+}
+.flexbox--middle {
+  -webkit-box-align: center;
+     -moz-box-align: center;
+          box-align: center;  
+}
+.flexbox--grass {
+  -webkit-box-align: grass;
+     -moz-box-align: grass;
+          box-align: grass; 
+}
+/* ----------------------------------
+ * tablebox
+ * ---------------------------------- */
+.tablebox {
+  display: table;
+  width: 100%;
+}
+html.tablebox {
+  display: block;
+  width: auto;
+}
+.tablebox__cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* ----------------------------------
+ * no-flicker
+ * ---------------------------------- */
+.no-flicker {
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+     -moz-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+/* ----------------------------------
+ * full
+ * ---------------------------------- */
+.full-screen {
+  width: 100%;
+  height: 100%; 
+}
+.full-background {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.full-fixe{
+  position: fixed;
+  left: 0;
+  top:0; 
+}
+/* ----------------------------------
+ * page
+ * ---------------------------------- */
+section[role="page"] {
+  position: relative;
+}
+section[role="page"][type="end"] {
+  padding-bottom: 56px;
+}
+section[role="page"][type="both"]{
+  padding: 10px 0 56px;
+}
+/* ----------------------------------
+ * button
+ * ---------------------------------- */
+.btn {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;  
+  cursor: pointer; 
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-transition: all 0.2s ease;
+   -moz-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+  font-size: 16px;
+  line-height: 1;
+  border-radius: 3px;
+  color: rgba(0, 0, 0, 1);
+  background-color: #ffffff;
+  padding: 5px 10px;
+  border:1px solid transparent;
+}
+.btn:hover{
+  background-color: #f9f9f9;
+}
+.btn--default{
+  border-color: #c9c9c9;
+}
