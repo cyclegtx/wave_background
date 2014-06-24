@@ -26,7 +26,6 @@
 <body>
 	<section class="doc doc--bg2">
 		<!-- logo -->
-		<!-- 暂时隐藏 -->
 		<!-- <div class="logo"><img src="assets/img/image/logo.png" alt=""></div>
 		<div class="sohonav">
 			<a href="slt_repast.html" class="item">
@@ -39,15 +38,31 @@
 				<i class="icon-shop"></i><br>购物
 			</a>
 		</div> -->
-		<!-- 新建一个画布（<canvas>)元素，并放在在所有按钮和logo的下方以免遮挡前面的元素。 -->
 		<canvas id="canvas" style="position:absolute;top:0px;left:0px;z-index:1;"></canvas>
 	</section>
 	<script type="text/javascript">
-		//将Canvas的宽高设定成其父元素的宽高，以充满他的父元素。也可以直接使用window.innerHeight,window.innerWidth。使其充满整个屏幕。
 		var canvas = document.getElementById('canvas');  
 		var ctx = canvas.getContext('2d');  
 		canvas.width = canvas.parentNode.offsetWidth;  
-		canvas.height = canvas.parentNode.offsetHeight;  
+		canvas.height = canvas.parentNode.offsetHeight;
+		//填充颜色  
+		ctx.fillStyle = "rgba(0,222,255, 0.2)";  
+		//开始绘制路径  
+		ctx.beginPath();  
+		//左上角  
+		ctx.moveTo(0, canvas.height/2);  
+		//右上角  
+		ctx.lineTo(canvas.width, canvas.height/2);  
+		//右下角  
+		ctx.lineTo(canvas.width, canvas.height);  
+		//左下角  
+		ctx.lineTo(0, canvas.height);  
+		//左上角  
+		ctx.lineTo(0, canvas.height/2);  
+		//闭合路径  
+		ctx.closePath();  
+		//填充路径  
+		ctx.fill();  
 	</script>
 </body>
 </html>
