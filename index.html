@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Wave background : 微信公众帐号“玩转三里屯”--消费指南" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Wave background</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cyclegtx/wave_background">View on GitHub</a>
+
+          <h1 id="project_title">Wave background</h1>
+          <h2 id="project_tagline">微信公众帐号“玩转三里屯”--消费指南</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/cyclegtx/wave_background/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/cyclegtx/wave_background/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B8%90%E5%8F%B7%E7%8E%A9%E8%BD%AC%E4%B8%89%E9%87%8C%E5%B1%AF--%E6%B6%88%E8%B4%B9%E6%8C%87%E5%8D%97" class="anchor" href="#%E5%BE%AE%E4%BF%A1%E5%85%AC%E4%BC%97%E5%B8%90%E5%8F%B7%E7%8E%A9%E8%BD%AC%E4%B8%89%E9%87%8C%E5%B1%AF--%E6%B6%88%E8%B4%B9%E6%8C%87%E5%8D%97"><span class="octicon octicon-link"></span></a>微信公众帐号“玩转三里屯”--消费指南</h1>
+
+<p>使用canvas为背景添加动画。</p>
+
+<h4>
+<a name="step1html%E9%A1%B5%E9%9D%A2" class="anchor" href="#step1html%E9%A1%B5%E9%9D%A2"><span class="octicon octicon-link"></span></a>Step1.HTML页面</h4>
+
+<p>完成HTML页面</p>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/ef35a31908e6a735a3f4b576d80fd622375e731f">点击查看</a>  </p>
+
+<h4>
+<a name="step2%E6%B7%BB%E5%8A%A0canvas" class="anchor" href="#step2%E6%B7%BB%E5%8A%A0canvas"><span class="octicon octicon-link"></span></a>Step2.添加Canvas</h4>
+
+<p>新建一个画布<code>&lt;canvas&gt;</code>元素，并放在在所有按钮和logo的下方以免遮挡前面的元素。</p>
+
+<div class="highlight highlight-html"><pre><span class="nt">&lt;canvas</span> <span class="na">id=</span><span class="s">"canvas"</span> <span class="na">style=</span><span class="s">"position:absolute;top:0px;left:0px;z-index:1;"</span><span class="nt">&gt;&lt;/canvas&gt;</span>
+</pre></div>
+
+<p>将Canvas的宽高设定成其父元素的宽高，以充满他的父元素。也可以直接使用<code>window.innerHeight</code> <code>window.innerWidth</code>
+  使其充满整个屏幕。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">canvas</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'canvas'</span><span class="p">);</span>  
+<span class="kd">var</span> <span class="nx">ctx</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">getContext</span><span class="p">(</span><span class="s1">'2d'</span><span class="p">);</span>  
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">;</span>  
+<span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span> <span class="o">=</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">parentNode</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">;</span>
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/2cf051efbf4dd95838b56e16f1d83feec0780a82">点击查看</a></p>
+
+<h4>
+<a name="step3%E7%94%BB%E7%9F%A9%E5%BD%A2" class="anchor" href="#step3%E7%94%BB%E7%9F%A9%E5%BD%A2"><span class="octicon octicon-link"></span></a>Step3.画矩形</h4>
+
+<p>在画布中画一个充满半个屏幕的矩形。
+  我们只需要找到矩形的四个定点的坐标，使用Canvas的绘制路径并填充这个路径。四个点分别是：<code>(0, 画布高度t/2)</code>
+<code>(画布宽度, 画布高度t/2)</code>
+<code>(画布宽度 画布高度t/2)</code>
+<code>(0, 画布高度t/2)</code></p>
+
+<p>注意：坐标的（0，0）在画布的左上角。  </p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//填充颜色</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"rgba(0,222,255, 0.2)"</span><span class="p">;</span>
+<span class="c1">//开始绘制路径</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+<span class="c1">//左上角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">//右上角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">//右下角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="c1">//左下角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="c1">//左上角</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+<span class="c1">//闭合路径</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+<span class="c1">//填充路径</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/60be5b0e29bad3012627e27cbe86daa1d6678160">点击查看</a></p>
+
+<h4>
+<a name="step4%E4%BD%BF%E7%9F%A9%E5%BD%A2%E8%BF%90%E5%8A%A8" class="anchor" href="#step4%E4%BD%BF%E7%9F%A9%E5%BD%A2%E8%BF%90%E5%8A%A8"><span class="octicon octicon-link"></span></a>Step4.使矩形运动</h4>
+
+<p>让矩形动起来。要做动画我们需要持续的清空画布并重新绘制新的矩形，就像电影每秒播放24张图片。我们新建一个loop函数，用来绘制每一帧的图像，并使用requestAnimFrame来告诉浏览器每一帧都要使用loop来绘制。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//如果浏览器支持requestAnimFrame则使用requestAnimFrame否则使用setTimeout</span>
+<span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimFrame</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+<span class="k">return</span>  <span class="nb">window</span><span class="p">.</span><span class="nx">requestAnimationFrame</span>       <span class="o">||</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">webkitRequestAnimationFrame</span> <span class="o">||</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">mozRequestAnimationFrame</span>    <span class="o">||</span>
+        <span class="kd">function</span><span class="p">(</span> <span class="nx">callback</span> <span class="p">){</span>
+          <span class="nb">window</span><span class="p">.</span><span class="nx">setTimeout</span><span class="p">(</span><span class="nx">callback</span><span class="p">,</span> <span class="mi">1000</span> <span class="o">/</span> <span class="mi">60</span><span class="p">);</span>
+        <span class="p">};</span>
+<span class="p">})();</span>
+<span class="kd">function</span> <span class="nx">loop</span><span class="p">(){</span>
+    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">loop</span><span class="p">();</span>
+</pre></div>
+
+<p>把之前绘制矩形的代码放到loop中，并在绘制矩形的代码之前清空画布中所有的图形。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="kd">function</span> <span class="nx">loop</span><span class="p">(){</span>
+    <span class="c1">//清空canvas</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="c1">//绘制矩形</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"rgba(0,222,255, 0.2)"</span><span class="p">;</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>接下来我们更改每一帧中的矩形的高度来模拟波浪的形态。</p>
+
+<p>波浪其实是在波峰与波谷之间做周期性运动。我们假设波峰与波谷的大小都是50px，那么矩形的高度的变化值应该在-50px到50px之间。为了达到周期性的效果我们采用正弦函数<code>sin(x)</code>乘以50，因为不管x值怎么变化sin(x)的值始终在-1与1之间。</p>
+
+<p>我们新建一个变量<code>var step =0</code> 使其在每一帧中自增，表示每一帧角度增加一度，并用<code>Math.sin()</code>取他的正弦值。JS中的sin使用的弧度值，我们需要把step转换成弧度值<code>var angle = step*Math.PI/180;</code>取角度的正弦值乘以50得到了矩形高度的变化量。将变化量加在矩形的左上与右上两个顶点的y坐标上。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//初始角度为0</span>
+<span class="kd">var</span> <span class="nx">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">loop</span><span class="p">(){</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"rgba(0,222,255, 0.2)"</span><span class="p">;</span>
+    <span class="c1">//角度增加一度</span>
+    <span class="nx">step</span><span class="o">++</span><span class="p">;</span>
+    <span class="c1">//角度转换成弧度</span>
+    <span class="kd">var</span> <span class="nx">angle</span> <span class="o">=</span> <span class="nx">step</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="c1">//矩形高度的变化量</span>
+    <span class="kd">var</span> <span class="nx">deltaHeight</span>   <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="c1">//在矩形的左上与右上两个顶点加上高度变化量</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/5d855717cb6b788dabbe5268e6674300f5731e80">点击查看</a></p>
+
+<h4>
+<a name="step5%E4%BD%BF%E7%9F%A9%E5%BD%A2%E5%B7%A6%E5%8F%B3%E8%BF%90%E5%8A%A8%E4%B8%8D%E5%90%8C%E6%AD%A5" class="anchor" href="#step5%E4%BD%BF%E7%9F%A9%E5%BD%A2%E5%B7%A6%E5%8F%B3%E8%BF%90%E5%8A%A8%E4%B8%8D%E5%90%8C%E6%AD%A5"><span class="octicon octicon-link"></span></a>Step5.使矩形左右运动不同步</h4>
+
+<p>将右上顶点的变化值改为角度的余弦，使其左右不同步<code>var deltaHeightRight   = Math.cos(angle) * 50;</code></p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//初始角度为0</span>
+<span class="kd">var</span> <span class="nx">step</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="kd">function</span> <span class="nx">loop</span><span class="p">(){</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="s2">"rgba(0,222,255, 0.2)"</span><span class="p">;</span>
+    <span class="c1">//角度增加一度</span>
+    <span class="nx">step</span><span class="o">++</span><span class="p">;</span>
+    <span class="c1">//角度转换成弧度</span>
+    <span class="kd">var</span> <span class="nx">angle</span> <span class="o">=</span> <span class="nx">step</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+    <span class="c1">//矩形高度的变化量</span>
+    <span class="kd">var</span> <span class="nx">deltaHeight</span>   <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="c1">//矩形高度的变化量(右上顶点)</span>
+    <span class="kd">var</span> <span class="nx">deltaHeightRight</span>   <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">;</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+    <span class="c1">//右上顶点</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeightRight</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/1f42946f10836110e16dbfd76a65fcd88cd16ae1">点击查看</a></p>
+
+<h4>
+<a name="step6%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%B5%AA%E7%9A%84%E5%BD%A2%E6%80%81" class="anchor" href="#step6%E6%A8%A1%E6%8B%9F%E6%B3%A2%E6%B5%AA%E7%9A%84%E5%BD%A2%E6%80%81"><span class="octicon octicon-link"></span></a>Step6.模拟波浪的形态</h4>
+
+<p>将矩形的最上面的边变成曲线来模拟波浪的起伏。在上面的代码中我们用<code>lineTo</code>来绘制矩形的边，为了要绘制曲线我们需要<code>bezierCurveTo(cpX1, cpY1, cpX2, cpY2, x, y)</code>函数。</p>
+
+<p>绘制的起点是矩形的左上顶点，结束点为右上顶点。<code>bezierCurveTo</code>函数的参数中<code>(cpX1,cpY1)</code>与<code>(cpX2,cpY2)</code>分别是起点与结束点的控制点，<code>(x,y)</code>为结束点。我们将两个控制点的x值设定在画布的正中心，y值在起始点与终点的y值上面减去50;<code>(canvas.width /2, canvas.height/2+deltaHeight-50)</code> <code>(canvas.width/2,canvas.height/2+deltaHeightRight-50)</code>(可以根据效果调整)。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+<span class="c1">//ctx.lineTo(canvas.width, canvas.height/2+deltaHeightRight);</span>
+<span class="c1">//画曲线</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">bezierCurveTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeightRight</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeightRight</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+<span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/32ae5d1096f906c697458201c2273ff8abb49fbb">点击查看</a></p>
+
+<h4>
+<a name="step73%E4%B8%AA%E6%B3%A2%E6%B5%AA" class="anchor" href="#step73%E4%B8%AA%E6%B3%A2%E6%B5%AA"><span class="octicon octicon-link"></span></a>Step7.3个波浪</h4>
+
+<p>一个波浪画好了。我们只需要同时画3个不同颜色的波浪，并且使不同波浪的角度不同就可以得到效果图中的效果了。</p>
+
+<div class="highlight highlight-javascript"><pre><span class="c1">//定义三条不同波浪的颜色</span>
+<span class="kd">var</span> <span class="nx">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"rgba(0,222,255, 0.2)"</span><span class="p">,</span>
+               <span class="s2">"rgba(157,192,249, 0.2)"</span><span class="p">,</span>
+               <span class="s2">"rgba(0,168,255, 0.2)"</span><span class="p">];</span>
+<span class="kd">function</span> <span class="nx">loop</span><span class="p">(){</span>
+    <span class="nx">ctx</span><span class="p">.</span><span class="nx">clearRect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+    <span class="nx">step</span><span class="o">++</span><span class="p">;</span>
+    <span class="c1">//画3个不同颜色的矩形</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">j</span><span class="o">--</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fillStyle</span> <span class="o">=</span> <span class="nx">lines</span><span class="p">[</span><span class="nx">j</span><span class="p">];</span>
+        <span class="c1">//每个矩形的角度都不同，每个之间相差45度</span>
+        <span class="kd">var</span> <span class="nx">angle</span> <span class="o">=</span> <span class="p">(</span><span class="nx">step</span><span class="o">+</span><span class="nx">j</span><span class="o">*</span><span class="mi">45</span><span class="p">)</span><span class="o">*</span><span class="nb">Math</span><span class="p">.</span><span class="nx">PI</span><span class="o">/</span><span class="mi">180</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">deltaHeight</span>   <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">sin</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">deltaHeightRight</span>   <span class="o">=</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">cos</span><span class="p">(</span><span class="nx">angle</span><span class="p">)</span> <span class="o">*</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">beginPath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">moveTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">bezierCurveTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeightRight</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeightRight</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="nx">canvas</span><span class="p">.</span><span class="nx">width</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">lineTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nx">canvas</span><span class="p">.</span><span class="nx">height</span><span class="o">/</span><span class="mi">2</span><span class="o">+</span><span class="nx">deltaHeight</span><span class="p">);</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">closePath</span><span class="p">();</span>
+        <span class="nx">ctx</span><span class="p">.</span><span class="nx">fill</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="nx">requestAnimFrame</span><span class="p">(</span><span class="nx">loop</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/1f316066805f48ccc312aad35f83963c6b5fb6a3">点击查看</a></p>
+
+<h4>
+<a name="step8%E5%AE%8C%E6%88%90" class="anchor" href="#step8%E5%AE%8C%E6%88%90"><span class="octicon octicon-link"></span></a>Step8.完成</h4>
+
+<p>删掉按钮与logo的HTML代码就大功告成了。</p>
+
+<p><a href="https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e">点击查看</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Wave background maintained by <a href="https://github.com/cyclegtx">cyclegtx</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
