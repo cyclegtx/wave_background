@@ -9,7 +9,7 @@
   
   [点击查看](https://github.com/cyclegtx/wave_background/tree/ef35a31908e6a735a3f4b576d80fd622375e731f)  
 ####Step2.添加Canvas
-  新建一个画布（<canvas>)元素，并放在在所有按钮和logo的下方以免遮挡前面的元素。
+  新建一个画布```<canvas>```元素，并放在在所有按钮和logo的下方以免遮挡前面的元素。
 ```html
 <canvas id="canvas" style="position:absolute;top:0px;left:0px;z-index:1;"></canvas>
 ```
