@@ -45,24 +45,40 @@
 		var ctx = canvas.getContext('2d');  
 		canvas.width = canvas.parentNode.offsetWidth;  
 		canvas.height = canvas.parentNode.offsetHeight;
-		//填充颜色  
-		ctx.fillStyle = "rgba(0,222,255, 0.2)";  
-		//开始绘制路径  
-		ctx.beginPath();  
-		//左上角  
-		ctx.moveTo(0, canvas.height/2);  
-		//右上角  
-		ctx.lineTo(canvas.width, canvas.height/2);  
-		//右下角  
-		ctx.lineTo(canvas.width, canvas.height);  
-		//左下角  
-		ctx.lineTo(0, canvas.height);  
-		//左上角  
-		ctx.lineTo(0, canvas.height/2);  
-		//闭合路径  
-		ctx.closePath();  
-		//填充路径  
-		ctx.fill();  
+
+
+		//如果浏览器支持requestAnimFrame则使用requestAnimFrame否则使用setTimeout  
+		window.requestAnimFrame = (function(){  
+		return  window.requestAnimationFrame       ||  
+		        window.webkitRequestAnimationFrame ||  
+		        window.mozRequestAnimationFrame    ||  
+		        function( callback ){  
+		          window.setTimeout(callback, 1000 / 60);  
+		        };  
+		})();  
+		//初始角度为0  
+		var step = 0;  
+		function loop(){  
+		    ctx.clearRect(0,0,canvas.width,canvas.height);  
+		    ctx.fillStyle = "rgba(0,222,255, 0.2)";  
+		    //角度增加一度  
+		    step++;  
+		    //角度转换成弧度  
+		    var angle = step*Math.PI/180;  
+		    //矩形高度的变化量  
+		    var deltaHeight   = Math.sin(angle) * 50;  
+		    ctx.beginPath();  
+		    //在矩形的左上与右上两个顶点加上高度变化量  
+		    ctx.moveTo(0, canvas.height/2+deltaHeight);  
+		    ctx.lineTo(canvas.width, canvas.height/2+deltaHeight);  
+		    ctx.lineTo(canvas.width, canvas.height);  
+		    ctx.lineTo(0, canvas.height);  
+		    ctx.lineTo(0, canvas.height/2+deltaHeight);  
+		    ctx.closePath();  
+		    ctx.fill();  
+		    requestAnimFrame(loop);  
+		} 
+		loop(); 
 	</script>
 </body>
 </html>
