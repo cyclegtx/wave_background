@@ -1,7 +1,11 @@
 微信公众帐号“玩转三里屯”--消费指南
 ===============
 
-使用canvas为背景添加动画。
+使用canvas为背景添加动画。先看效果图
+
+
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
+
 
 ####Step1.HTML页面
   完成HTML页面
@@ -54,9 +58,19 @@ ctx.closePath();
 ctx.fill();
 
 ```
+
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/2.1.jpg)
+
+
 [点击查看](https://github.com/cyclegtx/wave_background/tree/60be5b0e29bad3012627e27cbe86daa1d6678160)
+
+
 ####Step4.使矩形运动
+
+
   让矩形动起来。要做动画我们需要持续的清空画布并重新绘制新的矩形，就像电影每秒播放24张图片。我们新建一个loop函数，用来绘制每一帧的图像，并使用requestAnimFrame来告诉浏览器每一帧都要使用loop来绘制。
+  
+  
 ```javascript
 //如果浏览器支持requestAnimFrame则使用requestAnimFrame否则使用setTimeout
 window.requestAnimFrame = (function(){
@@ -119,7 +133,13 @@ function loop(){
 	requestAnimFrame(loop);
 }
 ```
+
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/2.gif)
+
+
 [点击查看](https://github.com/cyclegtx/wave_background/tree/5d855717cb6b788dabbe5268e6674300f5731e80)
+
+
 ####Step5.使矩形左右运动不同步
 
 
@@ -153,6 +173,9 @@ function loop(){
 }
 ```
 
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/3.gif)
+
+
 [点击查看](https://github.com/cyclegtx/wave_background/tree/1f42946f10836110e16dbfd76a65fcd88cd16ae1)
 
 
@@ -175,6 +198,9 @@ ctx.lineTo(0, canvas.height);
 ctx.lineTo(0, canvas.height/2+deltaHeight);
 ctx.closePath();
 ```
+
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/4.gif)
+
 
 [点击查看](https://github.com/cyclegtx/wave_background/tree/32ae5d1096f906c697458201c2273ff8abb49fbb)
 
@@ -213,6 +239,9 @@ function loop(){
 }
 ```
 
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/5.gif)
+
+
 [点击查看](https://github.com/cyclegtx/wave_background/tree/1f316066805f48ccc312aad35f83963c6b5fb6a3)
 
 
@@ -220,6 +249,9 @@ function loop(){
 
 
 删掉按钮与logo的HTML代码就大功告成了。
+
+
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
 
 
 [点击查看](https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e)
