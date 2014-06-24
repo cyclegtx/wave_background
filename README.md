@@ -1,7 +1,9 @@
-微信公众帐号“玩转三里屯”--消费指南
+使用canvas制作动态背景
 ===============
+此页面是微信公众帐号《玩转三里屯》中的“消费指南”功能所用的页面。考虑到页面只在手机中浏览，而且手机对canvas的支持又非常好，所以打算使用canvas做点不一样的动画。
 
-使用canvas为背景添加动画。先看效果图
+
+先看效果图
 
 
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
@@ -10,6 +12,7 @@
 ####Step1.HTML页面
   完成HTML页面
   
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.1.jpg)
   
   [点击查看](https://github.com/cyclegtx/wave_background/tree/ef35a31908e6a735a3f4b576d80fd622375e731f)  
 ####Step2.添加Canvas
