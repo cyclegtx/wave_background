@@ -70,13 +70,14 @@
 		    //矩形高度的变化量(右上顶点)  
 		    var deltaHeightRight   = Math.cos(angle) * 50;  
 		    ctx.beginPath();  
-		    ctx.moveTo(0, canvas.height/2+deltaHeight);  
-		    //右上顶点  
-		    ctx.lineTo(canvas.width, canvas.height/2+deltaHeightRight);  
-		    ctx.lineTo(canvas.width, canvas.height);  
-		    ctx.lineTo(0, canvas.height);  
-		    ctx.lineTo(0, canvas.height/2+deltaHeight);  
-		    ctx.closePath();  
+			ctx.moveTo(0, canvas.height/2+deltaHeight);  
+			//ctx.lineTo(canvas.width, canvas.height/2+deltaHeightRight);  
+			//画曲线  
+			ctx.bezierCurveTo(canvas.width /2, canvas.height/2+deltaHeight-50, canvas.width / 2, canvas.height/2+deltaHeightRight-50, canvas.width, canvas.height/2+deltaHeightRight);  
+			ctx.lineTo(canvas.width, canvas.height);  
+			ctx.lineTo(0, canvas.height);  
+			ctx.lineTo(0, canvas.height/2+deltaHeight);  
+			ctx.closePath(); 
 		    ctx.fill();  
 		    requestAnimFrame(loop);  
 		}
