@@ -27,12 +27,10 @@ canvas.height = canvas.parentNode.offsetHeight;
   [点击查看](https://github.com/cyclegtx/wave_background/tree/2cf051efbf4dd95838b56e16f1d83feec0780a82)
 ####Step3.画矩形
   在画布中画一个充满半个屏幕的矩形。
-  我们只需要找到矩形的四个定点的坐标，使用Canvas的绘制路径并填充这个路径。四个点分别是：
-
-1. (0, 画布高度t/2)
-2. (画布宽度, 画布高度t/2)
-3. (画布宽度 画布高度t/2)
-4. (0, 画布高度t/2)
+  我们只需要找到矩形的四个定点的坐标，使用Canvas的绘制路径并填充这个路径。四个点分别是：```(0, 画布高度t/2)```
+```(画布宽度, 画布高度t/2)```
+```(画布宽度 画布高度t/2)```
+```(0, 画布高度t/2)```
 
   注意：坐标的（0，0）在画布的左上角。  
 ```javascript
@@ -123,7 +121,11 @@ function loop(){
 ```
 [点击查看](https://github.com/cyclegtx/wave_background/tree/5d855717cb6b788dabbe5268e6674300f5731e80)
 ####Step5.使矩形左右运动不同步
-	将右上顶点的变化值改为角度的余弦，使其左右不同步```var deltaHeightRight   = Math.cos(angle) * 50;```
+
+
+将右上顶点的变化值改为角度的余弦，使其左右不同步```var deltaHeightRight   = Math.cos(angle) * 50;```
+
+
 ```javascript
 //初始角度为0
 var step = 0;
@@ -152,12 +154,16 @@ function loop(){
 ```
 
 [点击查看](https://github.com/cyclegtx/wave_background/tree/1f42946f10836110e16dbfd76a65fcd88cd16ae1)
-####Step6.模拟波浪
-	将矩形的最上面的边变成曲线来模拟波浪的起伏。在上面的代码中我们用```lineTo```来绘制矩形的边，为了要绘制曲线我们需要```bezierCurveTo(cpX1, cpY1, cpX2, cpY2, x, y)```函数。
+
+
+####Step6.模拟波浪的形态
+
+
+将矩形的最上面的边变成曲线来模拟波浪的起伏。在上面的代码中我们用```lineTo```来绘制矩形的边，为了要绘制曲线我们需要```bezierCurveTo(cpX1, cpY1, cpX2, cpY2, x, y)```函数。
 	
-	绘制的起点是矩形的左上顶点，结束点为右上顶点。```bezierCurveTo```函数的参数中```(cpX1,cpY1)```与```(cpX2,cpY2)```分别是起点与结束点的控制点，```(x,y)```为结束点。我们将两个控制点的x值设定在画布的正中心，y值在起始点与终点的y值上面减去50;```(canvas.width /2, canvas.height/2+deltaHeight-50)``` ```(canvas.width / 2,canvas.height/2+deltaHeightRight-50)```(可以根据效果调整)。
-	
-	```ctx.bezierCurveTo(canvas.width /2, canvas.height/2+deltaHeight-50, canvas.width / 2, canvas.height/2+deltaHeightRight-50, canvas.width, canvas.height/2+deltaHeightRight);```
+绘制的起点是矩形的左上顶点，结束点为右上顶点。```bezierCurveTo```函数的参数中```(cpX1,cpY1)```与```(cpX2,cpY2)```分别是起点与结束点的控制点，```(x,y)```为结束点。我们将两个控制点的x值设定在画布的正中心，y值在起始点与终点的y值上面减去50;```(canvas.width /2, canvas.height/2+deltaHeight-50)``` ```(canvas.width/2,canvas.height/2+deltaHeightRight-50)```(可以根据效果调整)。
+
+
 ```javascript
 ctx.beginPath();
 ctx.moveTo(0, canvas.height/2+deltaHeight);
@@ -171,8 +177,14 @@ ctx.closePath();
 ```
 
 [点击查看](https://github.com/cyclegtx/wave_background/tree/32ae5d1096f906c697458201c2273ff8abb49fbb)
+
+
 ####Step7.3个波浪
-	一个波浪画好了。我们只需要同时画3个不同颜色的波浪，并且使不同波浪的角度不同就可以得到效果图中的效果了。
+
+
+一个波浪画好了。我们只需要同时画3个不同颜色的波浪，并且使不同波浪的角度不同就可以得到效果图中的效果了。
+
+
 ```javascript
 //定义三条不同波浪的颜色
 var lines = ["rgba(0,222,255, 0.2)",
@@ -202,8 +214,14 @@ function loop(){
 ```
 
 [点击查看](https://github.com/cyclegtx/wave_background/tree/1f316066805f48ccc312aad35f83963c6b5fb6a3)
+
+
 ####Step8.完成
-	删掉按钮与logo的HTML代码就大功告成了。
+
+
+删掉按钮与logo的HTML代码就大功告成了。
+
+
 [点击查看](https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e)
 
 
