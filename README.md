@@ -260,3 +260,6 @@ function loop(){
 
 
 <a href="https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e" target="_blank">点击查看历史代码</a>
+
+
+###如有问题或者建议请微博<a href="http://weibo.com/uedtianji" target="_blank">@UED天机</a>。我会及时回复
