@@ -268,4 +268,4 @@ function loop(){
 ==========
 
 ####相关阅读  
-1.[状动态背景](https://github.com/zhaokenger/dynamic_background)
+1.[状动态背景](https://github.com/uedtianji/dynamic_background)
