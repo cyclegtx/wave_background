@@ -6,7 +6,8 @@
 先看效果图
 
 
-![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
+![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)  
+<a href="http://cssdeck.com/labs/collab/u73pt0ew" target="_blank">代码在线预览</a>  
 
 
 ####Step1.HTML页面
@@ -259,7 +260,12 @@ function loop(){
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)
 
 
-<a href="https://github.com/cyclegtx/wave_background/tree/3206e4e0a65912b34e8a426de22fd3201ab4a80e" target="_blank">点击查看历史代码</a>
+<a href="http://cssdeck.com/labs/collab/u73pt0ew" target="_blank">代码在线预览</a>
 
 
 ###如有问题或者建议请微博<a href="http://weibo.com/uedtianji" target="_blank">@UED天机</a>。我会及时回复
+
+==========
+
+####相关阅读  
+1.[状动态背景](https://github.com/zhaokenger/dynamic_background)
