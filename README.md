@@ -1,12 +1,10 @@
 canvas制作波浪状动态背景
 ===============
-此页面是微信公众帐号《玩转三里屯》中的“消费指南”功能所用的页面。考虑到页面只在手机中浏览，而且手机对canvas的支持又非常好，所以打算使用canvas做点不一样的动画。
-
-
-先看效果图
-
-
+先看效果图  
 ![效果图](https://raw.githubusercontent.com/cyclegtx/wave_background/gh-pages/images/1.gif)  
+
+此页面是微信公众帐号《玩转三里屯》中的“消费指南”功能所用的页面。考虑到页面只在手机中浏览，而且手机对canvas的支持又非常好，所以打算使用canvas做点不一样的动画。  
+
 <a href="http://cssdeck.com/labs/collab/u73pt0ew" target="_blank">代码在线预览</a>  
 
 
@@ -269,3 +267,5 @@ function loop(){
 
 ####相关阅读  
 1.[状动态背景](https://github.com/uedtianji/dynamic_background)
+
+更多教程请访问：[ued.sexy](http://ued.sexy)  
